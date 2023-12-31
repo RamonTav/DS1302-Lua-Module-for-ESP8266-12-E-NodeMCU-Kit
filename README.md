@@ -27,7 +27,7 @@ This Lua module provides access to DS1302 ISP real-time clock.
 # ds1302.setTime()
 Sets the current date and time.
 
-# Syntaxs
+## Syntaxs
 ds1302.setTime(second, minute, hour, day, date, month, year)
 
 ## Parameters 
@@ -47,17 +47,20 @@ nil
 ds1302 = require("ds1302")
 
 -- Set date and time to Saturday, December 30th 2023 8:29PM
+
 ds1302.setTime(0, 29, 20, 6, 30, 12, 23)
 
 -- Don't forget to release it after use:
+
 ds1302 = nil
+
 package.loaded["ds1302"] = nil
 
 
 # ds1302.getTime()
 Get the current date and time.
 
-# Syntaxs
+## Syntaxs
 ds1302.getTime()
 
 ## Parameters 
@@ -77,30 +80,21 @@ none
 ds1302 = require("ds1302")
 
 -- Get date and time t
+
 second, minute, hour, day, date, month, year = ds1302.getTime()
 
 -- Print date and time
+
 print(string.format("Time & Date: %s:%s:%s %s/%s/%s",
+
       hour, minute, second, date, month, year))
 
 -- Don't forget to release it after use:
+
 ds1302 = nil
+
 package.loaded["ds1302"] = nil
 
 ## Operating circuit
+![Connection circuit showing a 10k resistor connected between mosi(GPIO6) and miso (GPIO7).](/assets/images/Operating_circuit.png)
 
-.--------------.                   .--------------. 
-|   Nodemcu    |                   |    DS1302    |
-|           ce |------------------>|CE            |
-|         mosi |>------o           |              |
-|              |       |           |              |
-|              |      .-. R10k     |              |
-|              |      | |          |              |
-|              |      | |          |              |
-|              |       -           |              |
-|              |       |           |              |
-|         miso |<------o---------->| I/O          |         
-|         clk  |>----------------->| SCLK         |       
-----------------                   ----------------
-
-    
