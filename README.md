@@ -44,17 +44,14 @@ nil
 
 ## Example 
 
-ds1302 = require("ds1302")
-
--- Set date and time to Saturday, December 30th 2023 8:29PM
-
-ds1302.setTime(0, 29, 20, 6, 30, 12, 23)
-
--- Don't forget to release it after use:
-
-ds1302 = nil
-
-package.loaded["ds1302"] = nil
+    ds1302 = require("ds1302")
+    
+    -- Set date and time to Saturday, December 30th 2023 8:29PM
+    ds1302.setTime(0, 29, 20, 6, 30, 12, 23)
+    
+    -- Don't forget to release it after use:
+    ds1302 = nil
+    package.loaded["ds1302"] = nil
 
 
 # ds1302.getTime()
@@ -77,23 +74,18 @@ none
 
 ## Example 
 
-ds1302 = require("ds1302")
+    ds1302 = require("ds1302")
 
--- Get date and time t
+    -- Get date and time 
+    second, minute, hour, day, date, month, year = ds1302.getTime()
+    
+    -- Print date and time
+    print(string.format("Time & Date: %s:%s:%s %s/%s/%s",
+          hour, minute, second, date, month, year))
 
-second, minute, hour, day, date, month, year = ds1302.getTime()
-
--- Print date and time
-
-print(string.format("Time & Date: %s:%s:%s %s/%s/%s",
-
-      hour, minute, second, date, month, year))
-
--- Don't forget to release it after use:
-
-ds1302 = nil
-
-package.loaded["ds1302"] = nil
+    -- Don't forget to release it after use:
+    ds1302 = nil
+    package.loaded["ds1302"] = nil
 
 ## Operating circuit
 ![Connection circuit showing a 10k resistor connected between mosi(GPIO6) and miso (GPIO7).](/assets/images/Operating_circuit.png)
